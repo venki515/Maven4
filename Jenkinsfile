@@ -1,12 +1,27 @@
 pipeline{
-	agent any
-	
+	agents any
+	tools{
+		maven 'apache-maven-3.5.3'
+		}
 	stages{
-		stage('Building Maven'){
+		stage('Initialization'){
 			steps{
-			bat 'mvn clean compile'
+				bat '''
+					echo "PATH = ${$PATH}"
+					echo "M2_HOME = ${M2_HOME}"
+					'''
+				}
+			}
+		stage('Compiliation'){
+			steps{
+				bat 'mvn clean complie'
+			}
+			post{
+				success{
+					junit 'target\surefire-reports\**\*.xml'
+				}
 			}
 		}
-		}
 	}
-	
+}
+		
