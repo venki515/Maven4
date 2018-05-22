@@ -7,7 +7,7 @@ pipeline{
 		stage('Initialization'){
 			steps{
 				bat '''
-					echo "PATH = ${$PATH}"
+					echo "PATH = ${PATH}"
 					echo "M2_HOME = ${M2_HOME}"
 					'''
 				}
@@ -18,7 +18,7 @@ pipeline{
 			}
 			post{
 				success{
-					junit 'target/surefire-reports/**/*.xml'
+					junit '*/target/surefire-reports/*.xml'
 				}
 			}
 		}
