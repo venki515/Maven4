@@ -23,11 +23,7 @@ pipeline{
 				bat 'mvn package'
 			}
 		}
-		stage('Deploy'){
-			steps{
-				bat'xcopy C:/Users/venkatesh/.jenkins/workspace/NewPipe/target/JenkinsWar.war C:/Users/venkatesh/Desktop/Jenkin &Tomcat/Tomcat/apache-tomcat-8.5.30/webapps'
-			}
-		}
+		
 	}
 }
 		
