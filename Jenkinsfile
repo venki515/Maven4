@@ -3,26 +3,17 @@ pipeline{
 	stages{
 		stage('Compile stage'){
 			steps{
-				withMaven(maven : 'apache-maven-3.5.3')
-					{
-						sh 'mvn compile'
-					}
-				}
+				echo 'Comipling'
 			}
+		}
 		stage('Test stage'){
 		steps{
-				withMaven(maven : 'apache-maven-3')
-				{
-					sh 'mvn test'
-				}
+				echo 'Testing'
 			}
 		}
 		stage('Deploy stage'){
 			steps{
-				withMaven(maven : 'apache-maven-3')
-				{
-					sh 'mvn deploy'
-				}
+				echo 'Deploying'
 			}
 		}
 	}
