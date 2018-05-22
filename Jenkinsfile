@@ -1,19 +1,9 @@
-pipeline{
+pipeline {
 	agent any
-	stages{
-		stage('Compile stage'){
-			steps{
-				echo 'Comipling'
-			}
-		}
-		stage('Test stage'){
-		steps{
-				echo 'Testing'
-			}
-		}
-		stage('Deploy stage'){
-			steps{
-				echo 'Deploying'
+	stages {
+		stage ('Copiling Stage') {
+			withMaven (maven : 'apache-maven-3.5.3') {
+			sh 'mvn clean compile'
 			}
 		}
 	}
