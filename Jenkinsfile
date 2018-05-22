@@ -1,12 +1,22 @@
-pipeline {
+pipeline{
 	agent any
-	stages {
-		stage ('Copiling Stage') {
-			steps {
-			Maven (maven : 'apache-maven-3.5.3') {
-			sh 'mvn clean compile'
+	tools{
+		maven 'apache-maven-3.5.3'
+		}
+	stages{
+		stage ('Initialization') {
+			steps{
+				sh ...
+					echo "PATH = ${PATH}"
+					echo "M2_HOME = ${M2_HOME}"
+					...
+
+			}
+		stage ('Building Maven') {
+			steps{
+			sh 'mvn -Dmaven.test.fail.ignore=true clean build'
 			}
 		}
+		}
 	}
-}
-}
+	}
