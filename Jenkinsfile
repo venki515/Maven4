@@ -14,7 +14,7 @@ pipeline{
 			}
 		stage('Compiliation'){
 			steps{
-				bat 'mvn clean complie'
+				bat 'mvn clean compile'
 			}
 			post{
 				success{
