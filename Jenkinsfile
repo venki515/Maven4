@@ -4,19 +4,19 @@ pipeline{
 		maven 'apache-maven-3.5.3'
 		}
 	stages{
-		stage ('Initialization') {
+		stage('Initialization'){
 			steps{
-				sh '''
+					sh '''
 					echo "PATH = ${PATH}"
 					echo "M2_HOME = ${M2_HOME}"
 					'''
-
+					}
 			}
-		stage ('Building Maven') {
+		stage('Building Maven'){
 			steps{
 			sh 'mvn -Dmaven.test.fail.ignore=true clean build'
 			}
 		}
 		}
 	}
-	}
+	
